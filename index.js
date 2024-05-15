@@ -69,13 +69,20 @@ function getDCF() {
     fetch("https://api.helius.xyz/v0/addresses/h2oMkkgUF55mxMFeuUgVYwvEnpV5kRbvHVuDWMKDYFC/balances?api-key=eff3cc4b-32f2-47d0-b6a0-ae82a5ba3159")
         .then(res => res.json())
         .then(data => {
-            dcfRevenue = (data.nativeBalance/ 1000000000 * 0.595)
-            dcfPayout = (dcfRevenue * 0.6) / 20000
-            dcfCat = dcfPayout * localStorage.getItem("catsOwned")
 
-            dcfRevenueHTML.textContent = `${dcfRevenue.toFixed(4)} Sol`
-            dcfPayoutHTML.textContent = `${dcfPayout.toFixed(4)} Sol`
-            dcfCatHTML.textContent = `${dcfCat.toFixed(4)} Sol`
+            fetch("https://api.helius.xyz/v0/addresses/dcfik2oUsdjDYmYbKxAKLWAnGXDS7gMmATA22EfRDqN/balances?api-key=eff3cc4b-32f2-47d0-b6a0-ae82a5ba3159")
+                .then(res => res.json())
+                .then(secondData => { 
+
+                    dcfRevenue = (((data.nativeBalance/ 1000000000)+(secondData.nativeBalance / 1000000000)) * 0.595)
+                    dcfPayout = (dcfRevenue * 0.6) / 20000
+                    dcfCat = dcfPayout * localStorage.getItem("catsOwned")
+        
+                    dcfRevenueHTML.textContent = `${dcfRevenue.toFixed(4)} Sol`
+                    dcfPayoutHTML.textContent = `${dcfPayout.toFixed(4)} Sol`
+                    dcfCatHTML.textContent = `${dcfCat.toFixed(4)} Sol`
+
+                })
         })
 }
 
@@ -83,28 +90,40 @@ function getDCD() {
     fetch("https://api.helius.xyz/v0/addresses/DbS2HRdTovF1VQjHxPXYMmp9Kov7V7e2MkQYGWe7xXW3/balances?api-key=eff3cc4b-32f2-47d0-b6a0-ae82a5ba3159")
         .then(res => res.json())
         .then(data => {
-            dcdRevenue = (data.nativeBalance/1000000000 * 0.7)
-            dcdPayout = (dcdRevenue * 0.44) / 20000
-            dcdCat = dcdPayout * localStorage.getItem("catsOwned")
 
-            dcdRevenueHTML.textContent = `${dcdRevenue.toFixed(4)} Sol`
-            dcdPayoutHTML.textContent = `${dcdPayout.toFixed(4)} Sol`
-            dcdCatHTML.textContent = `${dcdCat.toFixed(4)} Sol`
+            fetch("https://api.helius.xyz/v0/addresses/dcdVRDNr98aGj3XuYYuoy9RR5z17KPgL3JJaCvJ1d3o/balances?api-key=eff3cc4b-32f2-47d0-b6a0-ae82a5ba3159")
+            .then(res => res.json())
+            .then(secondData => { 
+                dcdRevenue = (((data.nativeBalance/1000000000)+(secondData.nativeBalance/1000000000)) * 0.7)
+                dcdPayout = (dcdRevenue * 0.44) / 20000
+                dcdCat = dcdPayout * localStorage.getItem("catsOwned")
+    
+                dcdRevenueHTML.textContent = `${dcdRevenue.toFixed(4)} Sol`
+                dcdPayoutHTML.textContent = `${dcdPayout.toFixed(4)} Sol`
+                dcdCatHTML.textContent = `${dcdCat.toFixed(4)} Sol`
+            })
         })
 }
+
 function getDS() {
     fetch("https://api.helius.xyz/v0/addresses/SpinoutmA1gax3vWqRByD3rUPdLN2mXyqGR6PZ1RNvd/balances?api-key=eff3cc4b-32f2-47d0-b6a0-ae82a5ba3159")
         .then(res => res.json())
         .then(data => {
-            dsRevenue = (data.nativeBalance/1000000000 * 0.7)
-            dsPayout = (dsRevenue * 0.25) / 20000
-            dsCat = dsPayout * localStorage.getItem("catsOwned")
 
-            dsRevenueHTML.textContent = `${dsRevenue.toFixed(4)} Sol`
-            dsPayoutHTML.textContent = `${dsPayout.toFixed(4)} Sol`
-            dsCatHTML.textContent = `${dsCat.toFixed(4)} Sol`
+            fetch("https://api.helius.xyz/v0/addresses/dsHJ7jpqSaDPAkLyvefuWScBDEvQ6MPyzectajaNWA9/balances?api-key=eff3cc4b-32f2-47d0-b6a0-ae82a5ba3159")
+                .then(res => res.json())
+                .then(secondData => { 
+                    dsRevenue = (((data.nativeBalance/1000000000)+(secondData.nativeBalance/1000000000)) * 0.7)
+                    dsPayout = (dsRevenue * 0.25) / 20000
+                    dsCat = dsPayout * localStorage.getItem("catsOwned")
+        
+                    dsRevenueHTML.textContent = `${dsRevenue.toFixed(4)} Sol`
+                    dsPayoutHTML.textContent = `${dsPayout.toFixed(4)} Sol`
+                    dsCatHTML.textContent = `${dsCat.toFixed(4)} Sol`
+                })
         })
 }
+
 function getinsurance() {
     fetch("https://api.helius.xyz/v0/addresses/DCFSBGZFygDwMMpyCP1BHbstiYwHF7yuQ8yLfxcqDe2Y/balances?api-key=eff3cc4b-32f2-47d0-b6a0-ae82a5ba3159")
         .then(res => res.json())
